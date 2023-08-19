@@ -14,6 +14,7 @@ class ProductController extends Controller
     {
         return view('products.index', [
             'shelves' => Shelf::cases(),
+            'products' => Product::orderBy('name')->orderBy('shelf')->get(),
         ]);
     }
 
