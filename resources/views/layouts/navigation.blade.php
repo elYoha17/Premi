@@ -15,6 +15,10 @@
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
                         Produits
                     </x-nav-link>
+
+                    <x-nav-link :href="route('activities.index')" :active="request()->routeIs('activities.*')">
+                        Activités
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -69,6 +73,10 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
                 Produits
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('activities.index')" :active="request()->routeIs('activities.*')">
+                Activités
             </x-responsive-nav-link>
         </div>
 
