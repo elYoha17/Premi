@@ -53,6 +53,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg divide-y">
+                @foreach ($activities as $activity)
+                    <div class="flex flex-col p-4">
+                        <div class="text-sm text-gray-600">{{ $activity->shelf->getFullname() }}</div>
+                        <div class="font-medium">{{ Str::ucfirst($activity->date->translatedFormat('l d F Y')) }}</div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 </x-app-layout>
