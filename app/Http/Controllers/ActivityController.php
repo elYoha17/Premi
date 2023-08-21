@@ -25,4 +25,11 @@ class ActivityController extends Controller
 
         return to_route('activities.index');
     }
+
+    public function show(Activity $activity): View
+    {
+        return view('activities.show', [
+            'activity' => $activity,
+        ]);
+    }
 }
