@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('products', ProductController::class)->only(['index', 'store']);
     Route::resource('activities', ActivityController::class)->only(['index', 'store', 'show']);
+    Route::resource('activities.sales', SaleController::class)->only('index');
 });
 
 Route::middleware('auth')->group(function () {
