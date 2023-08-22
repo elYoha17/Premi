@@ -15,7 +15,7 @@ class ActivityController extends Controller
     {
         return view('activities.index', [
             'shelves' => Shelf::cases(),
-            'activities' => Activity::orderBy('date')->orderBy('shelf')->get(),
+            'activities' => Activity::orderByDesc('date')->orderBy('shelf')->get(),
         ]);
     }
 
