@@ -4,7 +4,7 @@
             <div class="overflow-hidden">
                 <div class="flex justify-between items-center p-6 text-gray-900">
                     <div>
-                        <h2 class="text-lg font-medium capitalize text-gray-900">Activities</h2>
+                        <h2 class="text-lg font-medium capitalize text-gray-900">Activités</h2>
                     </div>
 
                     <div>
