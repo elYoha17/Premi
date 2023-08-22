@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Activité : {{ Str::ucfirst($activity->date->translatedFormat('l d F Y')) }}
+            Activité : {{ Str::ucfirst($activity->date->translatedFormat('l d F Y')) }} - ({{ $activity->shelf->getFullname() }})
         </h2>
     </x-slot>
 
