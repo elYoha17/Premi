@@ -12,7 +12,9 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        return view('products.index');
+        return view('products.index', [
+            'products' => Product::orderBy('name')->orderBy('shelf')->get(),
+        ]);
     }
 
     public function store(StoreProductRequest $request): RedirectResponse
