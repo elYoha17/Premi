@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', HomeController::class)->name('home');
+
+    Route::resource('products', ProductController::class)->only('index');
+
+    Route::resource('activities', ActivityController::class)->only('index');
 });
 
 Route::middleware('auth')->group(function () {
