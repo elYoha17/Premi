@@ -1,9 +1,10 @@
 <?php
 
 use App\Models\Activity;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -12,13 +13,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contributions', function (Blueprint $table) {
+        Schema::create('arrivals', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Activity::class)->constrained()->cascadeOnDelete();
-            $table->unsignedTinyInteger('type');
-            $table->decimal('amount', 18, 0);
+            $table->foreignIdFor(Product::class)->constrained();
+            $table->integer('quantity');
+            $table->decimal('cost', 18, 0);
 
-            $table->unique(['activity_id', 'type']);
+            $table->unique(['activity_id', 'product_id']);
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contributions');
+        Schema::dropIfExists('arrivals');
     }
 };
