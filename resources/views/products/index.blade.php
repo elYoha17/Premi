@@ -7,6 +7,18 @@
                 </h2>
                 <div class="flex items-center space-x-3">
                     <div>
+                    <x-select-input
+                        x-data
+                        x-on:change="window.location.href = $el.selectedOptions.item(0).dataset.link"
+                    >
+                        <option value=""  data-link="{{ route('products.index') }}">Tous les rayons</option>
+                        @foreach (App\Enums\Shelf::cases() as $shelf)
+                                <option value="{{ $shelf->value }}" data-link="{{ route('products.index', ['shelf' => $shelf->value]) }}" @selected($shelf === $current_shelf)>{{ $shelf->getLong() }}</option>
+                            @endforeach
+                        </x-select-input>
+                    </div>
+
+                    <div>
                         <x-primary-button
                             x-data
                             x-on:click.prevent="$dispatch('open-modal', 'product-creation')"
@@ -37,7 +49,7 @@
                                         <x-input-label for="shelf" value="Rayon" />
                                         <x-select-input id="shelf" name="shelf" class="mt-1 block w-full" required>
                                             @foreach (App\Enums\Shelf::cases() as $shelf)
-                                                <option value="{{ $shelf->value }}" @selected($shelf->value == old('shelf'))>{{ $shelf->getLong() }}</option>
+                                            <option value="{{ $shelf->value }}" @selected($shelf->value == old('shelf'))>{{ $shelf->getLong() }}</option>
                                             @endforeach
                                         </x-select-input>
                                         <x-input-error class="mt-2" :messages="$errors->productCreation->get('shelf')" />
